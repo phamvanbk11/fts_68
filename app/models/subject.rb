@@ -5,6 +5,7 @@ class Subject < ActiveRecord::Base
   has_many :exams
   has_many :posts
   scope :updated_desc, -> {order updated_at: :desc}
+  scope :alphabet, -> {order :name}
   validates :name, presence: true, length: {maximum: 50}
   validates :number_of_questions, presence: true,
     numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 200}

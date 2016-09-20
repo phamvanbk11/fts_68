@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 20160922105215) do
     t.string   "name"
     t.string   "chatwordId"
     t.boolean  "admin"
+    t.string   "password_digest"
+    t.string   "remember_digest"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false

@@ -150,7 +150,6 @@ $gray-medium-light: #eaeaea;
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
@@ -219,5 +218,10 @@ input {
 }
 
 .search-btn-block {
-  padding-top: 25x;
+  padding-top: 25px;
+}
+
+.big-checkbox {
+  width: 20px !important;
+  height: 20px !important;
 }

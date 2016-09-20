@@ -1,0 +1,12 @@
+<div class="input-group answer-check-box answer-field-box">
+  <span class="input-group-addon">
+    <%= f.check_box :is_correct, {class: "check-box answer-option"} %>
+    <%= f.hidden_field :is_correct, class: "hidden_for_answer" %>
+  </span>
+  <%= f.text_field :content, class:"form-control" %>
+  <%= f.hidden_field :_destroy, class: "destroy-choice" %>
+  <span class="input-group-addon">
+    <%= link_to t("remove"), "#", class: "remove_fields pull-right" %>
+  </span>
+</div>
+

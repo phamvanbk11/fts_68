@@ -36,6 +36,10 @@ en:
   search: "Search"
   close: "Close"
   create: "Create"
+  remove: "Remove"
+  answer: "Answer"
+  active: "Active"
+  correct_option: "Correct option"
   no-record-found: "No record founds"
   subjects-title: "Subjects"
   questions-title: "Questions"
@@ -44,7 +48,9 @@ en:
   next: "Next"
   prev: "Prev"
   order: "No"
-
+  form-contains: "Form contains"
+  required-two-answers: "This question must has at least two answers"
+  add-add_option: "Add more options"
   admin:
     subjects:
       index:
@@ -68,6 +74,15 @@ en:
         success: "Question deleted!"
         fail: "This question is used and cannot be deleted!"
         error: "Cannot delete this question!"
+      new:
+        new_question: "New question"
+      create:
+        success: "Question created!"
+      edit:
+        edit_question: "Edit question"
+      update:
+        success: "Question updated!"
+
   activerecord:
     models:
       subject: Subject
@@ -83,6 +98,10 @@ en:
         state: "State"
         answer: "Answer"
         subject: "Subject"
+    errors:
+      question:
+        add_answer: "Please add answer for this question"
+        select_answer: "Question must have answer"
 
   create_exams: "Create exams"
   alert_create_exam_success: "Exam was created successfully!"

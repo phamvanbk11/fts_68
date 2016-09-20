@@ -1,0 +1,6 @@
+<div class="answer-field-box">
+  <%= f.label t("answer"), class: "answer-title" %>
+  <%= f.text_area :content, class:"form-control" %>
+  <%= f.hidden_field :is_correct %>
+  <%= f.hidden_field :_destroy, class: "destroy-choice" %>
+</div>
