@@ -1,0 +1,33 @@
+<% provide :title, t("sign_up") %>
+
+<div class="content">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 devise">
+      <h1 class="title"><%= t("sign_up") %></h1>
+      <%= form_for resource, as: resource_name,
+        url: registration_path(resource_name) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password,
+            autocomplete: "off" ,class: "form-control"%>
+        </div>
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation,
+            autocomplete: "off", class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Sign up", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>
