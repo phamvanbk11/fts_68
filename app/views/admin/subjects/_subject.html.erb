@@ -1,0 +1,12 @@
+<tr>
+  <td><%= subject.name %></td>
+  <td><%= subject.description %></td>
+  <td><%= subject.number_of_questions %></td>
+  <td><%= subject.duration %></td>
+  <td><%= link_to t("edit"), "#",
+    {data: {toggle: "modal", target: "#subject-form-modal",
+    url: "#{edit_admin_subject_path(subject)}"},
+    class:"render-subject-form"} %></td>
+  <td><%= link_to t("delete"), admin_subject_path(subject),
+    method: :delete, data: {confirm: t("confirm")} %></td>
+</tr>

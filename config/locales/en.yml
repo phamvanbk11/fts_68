@@ -29,3 +29,35 @@ en:
   Delete_account: "Delete my account"
   message_email: "Currently waiting confirmation for:"
   sure_message: "Are you sure?"
+  new: "Add new"
+  edit: "Edit"
+  delete: "Delete"
+  confirm: "Are you sure?"
+  search: "Search"
+  close: "Close"
+  create: "Create"
+  no-record-found: "No record founds"
+  subjects-title: "Subjects"
+  form-contains: "Form contains"
+  not-exist-page: "The page you are looking for is not exist"
+  admin:
+    subjects:
+      index:
+        subjects: "Subjects"
+      new:
+        new_subject: "New subject"
+      edit:
+        edit_subject: "Edit subject"
+      create:
+        success: Subject created!
+      update:
+        success: Subject updated!
+  activerecord:
+    models:
+      subject: Subject
+    attributes:
+      subject:
+        name: "Name"
+        description: "Description"
+        number_of_questions: "Number of questions"
+        duration: "Duration (minutes)"

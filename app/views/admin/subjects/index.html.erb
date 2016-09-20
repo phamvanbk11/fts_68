@@ -1,0 +1,51 @@
+<% provide :title, t("subjects-title") %>
+<div class="body-container">
+  <div class="row">
+    <div class="col-md-8">
+      <%= render "search_form", q: @q %>
+    </div>
+    <div class="col-md-4">
+      <div class="form-inline">
+      <%= link_to t("new"), "#",
+        {data: {toggle: "modal", target: "#subject-form-modal",
+        url: "#{new_admin_subject_path}"},
+        class: "btn btn-info pull-right render-subject-form"} %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table .table-striped">
+      <thead>
+        <tr>
+          <th class="header-table">
+            <%= Subject.human_attribute_name "name" %>
+          </th>
+          <th class="header-table">
+            <%= Subject.human_attribute_name "description" %>
+          </th>
+          <th class="header-table">
+            <%= Subject.human_attribute_name "number_of_questions" %>
+          </th>
+          <th class="header-table">
+            <%= Subject.human_attribute_name "duration" %>
+          </th>
+          <th class="header-table" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @subjects.any? %>
+          <%= render @subjects %>
+        <% else %>
+          <tr>
+            <td colspan="7"><%= t "no-record-found" %></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="row pull-right">
+  </div>
+</div>
+<div class="modal fade" id="subject-form-modal" tabindex="-1" role="dialog">
+</div>
