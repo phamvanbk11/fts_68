@@ -22,6 +22,8 @@ gem "ransack"
 gem "kaminari"
 gem "simple_form"
 gem "kaminari-bootstrap", "~> 3.0.1"
+gem "cancancan", "~> 1.10"
+gem "paranoia", "~> 2.0"
 
 group :development, :test do
   gem "sqlite3",     "1.3.9"
