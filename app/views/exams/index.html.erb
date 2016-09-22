@@ -1,0 +1,27 @@
+<% provide :title, t("create_exams") %>
+<div class="content">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="form-group choose_subject">
+        <%= simple_form_for @exam, html: {class: "form-inline"} do |f| %>
+          <div class="row">
+            <div class="col-md-3">
+              <%= f.input :subject_id, collection: @subjects,
+                as: :select, include_blank: false,
+                label: false, html: {class: "form-control"} %>
+            </div>
+            <div class="col-md-2">
+              <%= f.submit :submit, class: "create btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <div id="exams">
+    <div class="table-responsive">
+      <%= render "exam" %>
+      <%= paginate @exams %>
+    </div>
+  </div>
+  </div>
+</div>
+</div>

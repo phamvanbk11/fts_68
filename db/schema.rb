@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 20160920082126) do
     t.integer  "subject_id"
     t.integer  "user_id"
     t.integer  "state"
-    t.integer  "spent_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "spent_time",  default: 0
+    t.boolean  "is_finished", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"
@@ -100,8 +101,6 @@ ActiveRecord::Schema.define(version: 20160920082126) do
     t.string   "name"
     t.string   "chatwordId"
     t.boolean  "admin"
-    t.string   "password_digest"
-    t.string   "remember_digest"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false

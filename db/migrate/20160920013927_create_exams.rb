@@ -4,7 +4,8 @@ class CreateExams < ActiveRecord::Migration
       t.references :subject, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
       t.integer :state
-      t.integer :spent_time
+      t.integer :spent_time, default: 0
+      t.boolean :is_finished, default: false
 
       t.timestamps null: false
     end

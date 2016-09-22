@@ -1,0 +1,45 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t "index" %></th>
+      <th><%= t "created_at" %></th>
+      <th><%= t "subject" %></th>
+      <th><%= t "status" %></th>
+      <th><%= t "duration" %></th>
+      <th><%= t "question_number" %></th>
+      <th><%= t "spent_time" %></th>
+      <th><%= t "score" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @exams.each_with_index do |exam, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= exam.created_at %></td>
+        <td><%= exam.subject.name %></td>
+        <td>
+          <span class="label label-<%= check_state_for_span exam.state %>">
+            <%= exam.state %>
+          </span></td>
+        <td><%= exam.subject.duration %></td>
+        <td><%= exam.subject.number_of_questions %></td>
+        <td><%= Time.at(exam.spent_time)
+          .utc.strftime(I18n.t "time.formats.mytime") %>
+        </td>
+        <td><%= "#{exam.results.count_correct_answer}
+          #{t"result"} #{Settings.question_per_exam}" %></td>
+        <% if exam.is_finished? %>
+          <td>
+            <%= button_to t("view"), "#", method: :post,
+              class: "btn btn-success", id: "button_start" %>
+          </td>
+        <% else %>
+          <td>
+            <%= button_to t("start"), "#", method: :post,
+              class: "btn btn-primary", id: "button_start" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

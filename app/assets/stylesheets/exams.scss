@@ -1,0 +1,16 @@
+.row{
+  margin-top: 20px;
+  .choose_subject{
+    border-bottom: 2px solid #E1E1E1;
+  }
+  .table{
+    margin-top: 50px;
+    thead{
+      background: #E1E1E1;
+    }
+  }
+  .create{
+    position: relative;
+    right: 38px;
+  }
+}
