@@ -61,3 +61,14 @@ en:
         description: "Description"
         number_of_questions: "Number of questions"
         duration: "Duration (minutes)"
+  create_exams: "Create exams"
+  alert_create_exam_success: "Exam was created successfully!"
+  alert_create_exam_fail: "Have problem when create exam!"
+  result: "/"
+  time:
+    formats:
+      mytime: "%H:%M:%S"
+  prev: "Previous"
+  next: "Next"
+  start: "Start"
+  view: "View"
