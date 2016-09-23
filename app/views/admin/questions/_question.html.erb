@@ -1,0 +1,19 @@
+<tr>
+  <td><%= number_order question_counter %></td>
+  <td><%= question.content %></td>
+  <td><%= question.correct_answer %></td>
+  <td><%= question.subject.name %></td>
+  <td>
+    <span class="label label-primary">
+      <%= t "question_type.#{question.question_type}"%>
+    </span>
+  </td>
+  <td>
+    <span class="label label-<%= css_class question.state %>">
+      <%= t "question_type.#{question.state}"%>
+    </span>
+  </td>
+  <td><%= link_to t("edit"), edit_admin_question_path(question) %></td>
+  <td><%= link_to t("delete"), admin_question_path(question),
+    method: :delete, data: {confirm: t("confirm")} %></td>
+</tr>

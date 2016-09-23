@@ -38,10 +38,13 @@ en:
   create: "Create"
   no-record-found: "No record founds"
   subjects-title: "Subjects"
+  questions-title: "Questions"
   form-contains: "Form contains"
   not-exist-page: "The page you are looking for is not exist"
   next: "Next"
   prev: "Prev"
+  order: "No"
+
   admin:
     subjects:
       index:
@@ -57,6 +60,13 @@ en:
       destroy:
         success: "Subject deleted!"
         fail: "This subject contains questions and cannot be deleted!"
+        error: "Cannot delete this subject!"
+    questions:
+      index:
+        questions: "Questions"
+      destroy:
+        success: "Question deleted!"
+        fail: "This question is used and cannot be deleted!"
         error: "Cannot delete this question!"
   activerecord:
     models:
@@ -67,6 +77,13 @@ en:
         description: "Description"
         number_of_questions: "Number of questions"
         duration: "Duration (minutes)"
+      question:
+        content: "Content"
+        question_type: "Type"
+        state: "State"
+        answer: "Answer"
+        subject: "Subject"
+
   create_exams: "Create exams"
   alert_create_exam_success: "Exam was created successfully!"
   alert_create_exam_fail: "Have problem when create exam!"
@@ -78,3 +95,13 @@ en:
   next: "Next"
   start: "Start"
   view: "View"
+
+  question_type:
+    single_choice: "Single choice"
+    multiple_choice: "Multiple choice"
+    text: "Text"
+  state:
+    waiting: "Waiting"
+    rejected: "Rejected"
+    active: "Active"
+    inactive: "Inactive"

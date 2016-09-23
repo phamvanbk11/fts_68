@@ -1,0 +1,34 @@
+<%= search_form_for [:admin, q], class: "row" do |f| %>
+  <div class="col-md-10">
+    <div class="form-group col-md-3">
+      <label><%= Subject.human_attribute_name "name" %></label>
+      <%= f.search_field :content_cont, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-3">
+      <label><%= Subject.human_attribute_name "subject" %></label>
+      <%= f.select :subject_id_eq,
+        options_from_collection_for_select(@subjects, :id, :name,
+        params[:q][:subject_id_eq]),
+        {include_blank: t("all")}, {class: "form-control"} %>
+    </div>
+    <div class="form-group col-md-3">
+      <label><%= Subject.human_attribute_name "question_type" %></label>
+      <%= f.select :question_type_eq,
+        options_from_collection_for_select(@questions_types, :second,
+        :first, params[:q][:question_type_eq]),
+        {include_blank: t("all")}, {class: "form-control"} %>
+    </div>
+    <div class="form-group col-md-3">
+      <label><%= Subject.human_attribute_name "state" %></label>
+      <%= f.select :state_eq,
+        options_from_collection_for_select(@states, :second,
+        :first, params[:q][:state_eq]),
+        {include_blank: t("all")}, {class: "form-control"} %>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="form-group search-btn-block">
+      <%= f.submit t("search"), class: "form-control" %>
+    </div>
+  </div>
+<% end %>

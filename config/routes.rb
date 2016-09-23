@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "exams#index"
   namespace :admin do
     resources :subjects
+    resources :questions
     root to: "subjects#index"
   end
 end
