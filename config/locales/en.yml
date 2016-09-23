@@ -40,6 +40,8 @@ en:
   subjects-title: "Subjects"
   form-contains: "Form contains"
   not-exist-page: "The page you are looking for is not exist"
+  next: "Next"
+  prev: "Prev"
   admin:
     subjects:
       index:
@@ -49,9 +51,13 @@ en:
       edit:
         edit_subject: "Edit subject"
       create:
-        success: Subject created!
+        success: "Subject created!"
       update:
-        success: Subject updated!
+        success: "Subject updated!"
+      destroy:
+        success: "Subject deleted!"
+        fail: "This subject contains questions and cannot be deleted!"
+        error: "Cannot delete this question!"
   activerecord:
     models:
       subject: Subject

@@ -40,11 +40,11 @@
             <td colspan="7"><%= t "no-record-found" %></td>
           </tr>
         <% end %>
-
       </tbody>
     </table>
   </div>
   <div class="row pull-right">
+    <%= paginate @subjects %>
   </div>
 </div>
 <div class="modal fade" id="subject-form-modal" tabindex="-1" role="dialog">
