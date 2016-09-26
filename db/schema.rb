@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922105215) do
+ActiveRecord::Schema.define(version: 20160927055715) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
     t.string   "content"
-    t.boolean  "is_correct"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "is_correct",  default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(version: 20160922105215) do
     t.integer  "subject_id"
     t.integer  "user_id"
     t.integer  "state"
-    t.integer  "spent_time",  default: 0
-    t.boolean  "is_finished", default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "spent_time",      default: 0
+    t.boolean  "is_finished",     default: false
+    t.datetime "start_tested_at"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"
@@ -84,6 +85,16 @@ ActiveRecord::Schema.define(version: 20160922105215) do
   add_index "results", ["exam_id"], name: "index_results_on_exam_id"
   add_index "results", ["question_id"], name: "index_results_on_question_id"
 
+  create_table "results_answers", force: :cascade do |t|
+    t.integer  "result_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "results_answers", ["answer_id"], name: "index_results_answers_on_answer_id"
+  add_index "results_answers", ["result_id"], name: "index_results_answers_on_result_id"
+
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -103,8 +114,6 @@ ActiveRecord::Schema.define(version: 20160922105215) do
     t.string   "name"
     t.string   "chatwordId"
     t.boolean  "admin"
-    t.string   "password_digest"
-    t.string   "remember_digest"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false

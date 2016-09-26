@@ -6,6 +6,7 @@ class CreateExams < ActiveRecord::Migration
       t.integer :state
       t.integer :spent_time, default: 0
       t.boolean :is_finished, default: false
+      t.datetime :start_tested_at
 
       t.timestamps null: false
     end

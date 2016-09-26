@@ -127,11 +127,11 @@ en:
   time:
     formats:
       mytime: "%H:%M:%S"
+      start_time: "%d/%m/%Y %H:%M"
   prev: "Previous"
   next: "Next"
   start: "Start"
   view: "View"
-
   question_type:
     single_choice: "Single choice"
     multiple_choice: "Multiple choice"
@@ -141,3 +141,14 @@ en:
     rejected: "Rejected"
     active: "Active"
     inactive: "Inactive"
+  Nil_exam: "No exam found"
+  success_finish_exam: "Success finish exam!"
+  success_save_exam: "Success when save exam!"
+  fail_finish_exam: "Something error, please try again!"
+  save: "Save"
+  finish: "Finish"
+  confirm_message: "Are you sure?"
+  exam_title: "Exam date:"
+  hours: "Hours"
+  minutes: "Minutes"
+  seconds: "Seconds"
