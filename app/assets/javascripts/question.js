@@ -64,4 +64,8 @@ function render_question_type(){
     $('#single-choice-question').addClass('hidden');
     $('#multiple-choice-question').removeClass('hidden');
   }
+
+  $('.destroy-choice').each(function(){
+    $(this).val('false');
+  });
 }
