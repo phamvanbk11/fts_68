@@ -15,4 +15,14 @@ class Question < ActiveRecord::Base
   scope :randomize, ->(word_per_page) do
     order("RANDOM()").limit word_per_page
   end
+
+  def correct_answer
+    answer = answers.detect {|answer| answer.is_correct?}
+    answer.content
+  end
+
+  def valid_to_delete?
+    !self.exams.any?
+  end
+
 end
