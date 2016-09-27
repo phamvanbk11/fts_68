@@ -42,11 +42,15 @@ en:
   reject: "Reject"
   answer: "Answer"
   active: "Active"
+  action: "Action"
+  admin_role: "Admin"
+  user_role: "User"
   new_question: "New question"
   correct_option: "Correct option"
   no-record-found: "No record founds"
   subjects-title: "Subjects"
   questions-title: "Questions"
+  users-title: "Users"
   form-contains: "Form contains"
   not-exist-page: "The page you are looking for is not exist"
   next: "Next"
@@ -58,6 +62,7 @@ en:
   admin:
     subjects:
       index:
+        manage_subjects: "Manage Subjects"
         subjects: "Subjects"
       new:
         new_subject: "New subject"
@@ -73,6 +78,7 @@ en:
         error: "Cannot delete this subject!"
     questions:
       index:
+        manage_questions: "Manage questions"
         questions: "Questions"
       destroy:
         success: "Question deleted!"
@@ -86,6 +92,14 @@ en:
         edit_question: "Edit question"
       update:
         success: "Question updated!"
+    users:
+      index:
+        users-title: "Manage Users"
+      destroy:
+        success: "User is deleted!"
+        fail: "Cannot delete this user!"
+      update:
+        fail: "An error occured. Please try again later!"
   questions:
     new:
       new_question: "Suggest question"
@@ -128,6 +142,7 @@ en:
     formats:
       mytime: "%H:%M:%S"
       start_time: "%d/%m/%Y %H:%M"
+      date_time: "%F %T"
   prev: "Previous"
   next: "Next"
   start: "Start"

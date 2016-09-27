@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :exams
   root to: "exams#index"
   namespace :admin do
+    resources :users
     resources :subjects
     resources :questions
     root to: "subjects#index"
