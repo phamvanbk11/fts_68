@@ -8,6 +8,9 @@
     <div class="col-md-2 add-new-block">
       <%= link_to t("new"), new_admin_question_path,
         class: "btn btn-info pull-right" %>
+      <a href="<%= admin_questions_path format: "xls", q: params[:q] %>">
+        <%= t ".download_xls" %>
+      </a>
     </div>
   </div>
   <div class="row">
@@ -36,8 +39,8 @@
         </tr>
       </thead>
       <tbody>
-        <% if @questions.any? %>
-          <%= render @questions %>
+        <% if @questions_pagenated.any? %>
+          <%= render @questions_pagenated %>
         <% else %>
           <tr>
             <td colspan="9"><%= t "no-record-found" %></td>
@@ -47,7 +50,7 @@
     </table>
   </div>
   <div class="row pull-right">
-    <%= paginate @questions %>
+    <%= paginate @questions_pagenated %>
   </div>
 </div>
 <div class="modal fade" id="subject-form-modal" tabindex="-1" role="dialog">

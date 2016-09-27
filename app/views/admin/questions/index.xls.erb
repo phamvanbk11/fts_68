@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Words">
+    <Table>
+      <Row>
+        <Cell></Cell>
+        <Cell><Data ss:Type="String"><%= t ".question_ex" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t ".type_ex" %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= t ".subject_ex" %></Data></Cell>
+      </Row>
+      <% @questions.each_with_index do |question, index| %>
+        <Row>
+          <Cell><Data ss:Type="String"><%= index + 1 %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= question.content %></Data></Cell>
+          <Cell>
+            <Data ss:Type="String"><%= question.question_type %></Data>
+          </Cell>
+          <Cell>
+            <Data ss:Type="String"><%= question.subject.name %></Data>
+          </Cell>
+        </Row>
+        <Row>
+          <Cell></Cell>
+          <Cell><Data ss:Type="String"><%= t ".answer" %></Data></Cell>
+        </Row>
+        <% question.answers.each do |answer| %>
+          <Row>
+          <Cell></Cell>
+          <Cell><Data ss:Type="String"><%= answer.content %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= answer.is_correct %></Data></Cell>
+          </Row>
+        <% end %>
+        <Row></Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

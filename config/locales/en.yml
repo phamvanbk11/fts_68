@@ -80,6 +80,13 @@ en:
       index:
         manage_questions: "Manage questions"
         questions: "Questions"
+        download_xls: "Export to excel"
+        order: "No"
+        question: "Question"
+        answer: "Answers"
+        question_ex: "QUESTION"
+        type_ex: "TYPE"
+        subject_ex: "SUBJECT"
       destroy:
         success: "Question deleted!"
         fail: "This question is used and cannot be deleted!"
