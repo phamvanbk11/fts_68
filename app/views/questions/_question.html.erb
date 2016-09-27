@@ -1,7 +1,6 @@
 <tr>
   <td><%= number_order question_counter %></td>
   <td><%= question.content %></td>
-  <td><%= question.correct_answer %></td>
   <td><%= question.subject.name %></td>
   <td>
     <span class="label label-primary">
@@ -14,11 +13,8 @@
     </span>
   </td>
   <td>
-    <% unless question.state == "rejected" %>
-      <%= link_to text_for_edit_state(question.state),
-        edit_admin_question_path(question) %>
-    <% end %>
+    <%= link_to t("edit"), edit_user_question_path(current_user, question) %>
   </td>
-  <td><%= link_to t("delete"), admin_question_path(question),
+  <td><%= link_to t("delete"), user_question_path(current_user, question),
     method: :delete, data: {confirm: t("confirm")} %></td>
 </tr>

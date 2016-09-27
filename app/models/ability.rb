@@ -6,7 +6,11 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      can :read, :all
+      can :read, Subject
+      can [:new, :create], Question
+      can [:index, :update, :destroy], Question,
+        state: [Question.states[:waiting], Question.states[:rejected]],
+        user_id: user.id
     end
 
     # The first argument to `can` is the action you are giving the user

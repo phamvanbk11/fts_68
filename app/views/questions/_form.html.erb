@@ -1,5 +1,5 @@
 <div id="word-form-container" class="row">
-  <%= form_for [:admin, @question] do |f| %>
+  <%= form_for [current_user, @question] do |f| %>
     <div class="col-md-6 col-md-offset-3 form-group">
       <%= render "shared/error_messages", object: f.object %>
     </div>
@@ -19,13 +19,7 @@
         :second, :first, {}, {class: "form-control",
         disabled: disable_select?(params[:action])} %>
     </div>
-    <div class="col-md-6 col-md-offset-3 form-group form-inline">
-      <lable>
-        <%= f.check_box :state, {class:"form-control big-checkbox",
-          checked: f.object.active?}, :active, :inactive %>
-        <%= t "active" %>
-      </lable>
-    </div>
+    <%= f.hidden_field :state, value: :waiting %>
     <div id="single-choice-question" class="col-md-6 col-md-offset-3 form-group">
       <%= link_to_add_fields t("add_option"), f, :answers, "radio_button" %>
       <% if f.object.question_type == "single_choice" %>
@@ -50,15 +44,7 @@
       <% end %>
     </div>
     <div class="col-md-6 col-md-offset-3 form-group text-center">
-      <% if f.object.state == "waiting" %>
-        <%= f.submit t("approve"), class: "btn btn-primary text-center" %>
-        <%= link_to t("reject"), admin_question_path(question: @question,
-          question: {state: :rejected}), method: :put,
-          data: {confirm: t("confirm")}, class: "btn btn-danger" %>
-      <% else %>
-        <%= f.submit yield(:button_text),
-          class: "btn btn-primary text-center" %>
-      <% end %>
+      <%= f.submit yield(:button_text), class: "btn btn-primary text-center" %>
     </div>
   <% end %>
 </div>
