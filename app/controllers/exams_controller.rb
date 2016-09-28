@@ -15,7 +15,8 @@ class ExamsController < ApplicationController
   def index
     @exam = current_user.exams.new
     @subjects = Subject.all
-    @exams = current_user.exams.desc.page(params[:page]).per Settings.exam_per_page
+    @exams = current_user.exams.desc.page(params[:page])
+      .per Settings.exam_per_page
   end
 
   def show
@@ -28,6 +29,7 @@ class ExamsController < ApplicationController
   def update
     if @exam.update_attributes update_exam_params
       if params[:commit] == "Save"
+        @exam.update_spent_time
         flash[:success] = t "success_save_exam"
         redirect_to exam_path
       else

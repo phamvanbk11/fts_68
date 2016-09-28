@@ -16,12 +16,18 @@ class Exam < ActiveRecord::Base
   end
 
   def set_uncheck_status
+    spent_time = Time.now - self.start_tested_at
     self.uncheck!
-    self.update_attributes is_finished: true
+    self.update_attributes is_finished: true, spent_time: spent_time
+  end
+
+  def update_spent_time
+    spent_time = Time.now - self.start_tested_at
+    self.update_attributes spent_time: spent_time
   end
 
   def time_left
-    spent_time = Time.now() - self.start_tested_at
+    spent_time = Time.now - self.start_tested_at
     time_left = self.subject.duration.minutes - spent_time
     if time_left > 0
       time_left
@@ -30,9 +36,14 @@ class Exam < ActiveRecord::Base
     end
   end
 
+  def number_of_correct
+    self.results.find_all{|result| result.is_correct_to_answer?}.size
+  end
+
   private
   def create_answer_for_specify_exam
-    @questions = Question.unlearned.randomize Settings.question_per_exam
+    @questions = Question.by_subject(self.subject)
+      .randomize self.subject.number_of_questions
     @questions.each do |question|
       self.results.build question_id: question.id
     end

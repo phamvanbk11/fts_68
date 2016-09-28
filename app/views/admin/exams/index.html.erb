@@ -1,0 +1,53 @@
+<% provide :title, t("exams-title") %>
+<div class="body-container">
+  <h1 class="text-center "><%= t ".exams-title" %></h1>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= t "index" %></th>
+          <th><%= t "created_at" %></th>
+          <th><%= t "subject" %></th>
+          <th><%= t "status" %></th>
+          <th><%= t "duration" %></th>
+          <th><%= t "question_number" %></th>
+          <th><%= t "spent_time" %></th>
+          <th><%= t "user" %></th>
+          <th><%= t "score" %></th>
+          <th><%= t "action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exams.each_with_index do |exam, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td>
+              <%= exam.created_at.strftime(I18n.t "time.formats.start_time") %>
+            </td>
+            <td><%= exam.subject.name %></td>
+            <td>
+              <span class="label label-<%= check_state_for_span exam.state %>">
+                <%= exam.state %>
+              </span></td>
+            <td><%= exam.subject.duration %></td>
+            <td><%= exam.subject.number_of_questions %></td>
+            <td><%= Time.at(exam.spent_time)
+              .utc.strftime(I18n.t "time.formats.mytime") %>
+            </td>
+            <td><%= exam.user.name %></td>
+            <td><%= "#{exam.number_of_correct}
+              #{t"result"} #{exam.subject.number_of_questions}" %></td>
+            <td>
+              <%= button_to t("check"), edit_admin_exam_path(exam),
+                method: :get,  class: "btn btn-success",
+                disabled: exam.start? || exam.testing? %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row pull-right">
+    <%= paginate @exams %>
+  </div>
+</div>

@@ -19,4 +19,23 @@ class Result < ActiveRecord::Base
       self.results_answers.build if self.results_answers.empty?
     end
   end
+
+  def is_correct_to_answer?
+    case self.question.question_type
+    when "text"
+      return false if self.results_answers.first.nil?
+      self.results_answers.first.answer_for_text == self.question.answers
+        .first.content
+    when "single_choice"
+      answer = self.question.answers.detect{|answer| answer.is_correct?}
+      self.answer_id == answer.id
+    when "multiple_choice"
+      answers = self.question.answers.find_all{|answer| answer.is_correct?}
+      system_answers = answers.map{|answer| answer.id}
+      user_answers = self.results_answers.map do
+        |result_answer| result_answer.answer_id
+      end
+      (system_answers - user_answers).empty?
+    end
+  end
 end

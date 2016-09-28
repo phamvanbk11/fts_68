@@ -39,4 +39,20 @@ module QuestionsHelper
   def text_for_edit_state state
     state == "waiting" ? t("check") : t("edit")
   end
+
+  def check_answer_for list_checked_answer, answer
+    list_checked_answer.detect{|result| result.answer_id == answer.id}
+  end
+
+  def label_for is_correct
+    if is_correct
+      content_tag :span, class: "lable label-primary" do
+        t "correct"
+      end
+    else
+      content_tag :span, class: "lable label-danger" do
+        t "incorrect"
+      end
+    end
+  end
 end

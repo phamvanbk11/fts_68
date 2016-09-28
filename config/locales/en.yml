@@ -51,7 +51,11 @@ en:
   subjects-title: "Subjects"
   questions-title: "Questions"
   users-title: "Users"
+  exams-title: "Exams"
+  correct: "Correct answer"
+  incorrect: "Wrong answer"
   form-contains: "Form contains"
+  hide: "-"
   not-exist-page: "The page you are looking for is not exist"
   next: "Next"
   prev: "Prev"
@@ -107,6 +111,12 @@ en:
         fail: "Cannot delete this user!"
       update:
         fail: "An error occured. Please try again later!"
+    exams:
+      index:
+        exams-title: "Exams"
+      update:
+        success: "Checked"
+        fail: "An error occured. Try again later!"
   questions:
     new:
       new_question: "Suggest question"
