@@ -1,0 +1,9 @@
+<div class="row exam">
+  <div class="col-md-10 col-md-offset-1 width-flash">
+    <div class="title">
+      <%= render "title" %>
+    </div>
+    <%= render "contents" %>
+    <%= render "countdown" unless @exam.is_finished? %>
+  </div>
+</div>

@@ -9,13 +9,16 @@
       <th><%= t "question_number" %></th>
       <th><%= t "spent_time" %></th>
       <th><%= t "score" %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @exams.each_with_index do |exam, index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><%= exam.created_at %></td>
+        <td>
+          <%= exam.created_at.strftime(I18n.t "time.formats.start_time") %>
+        </td>
         <td><%= exam.subject.name %></td>
         <td>
           <span class="label label-<%= check_state_for_span exam.state %>">
@@ -30,13 +33,13 @@
           #{t"result"} #{Settings.question_per_exam}" %></td>
         <% if exam.is_finished? %>
           <td>
-            <%= button_to t("view"), "#", method: :post,
-              class: "btn btn-success", id: "button_start" %>
+            <%= button_to t("view"), exam_path(exam), method: :get,
+              class: "btn btn-success" %>
           </td>
         <% else %>
           <td>
-            <%= button_to t("start"), "#", method: :post,
-              class: "btn btn-primary", id: "button_start" %>
+            <%= button_to t("start"), exam_path(exam), method: :get,
+              class: "btn btn-primary" %>
           </td>
         <% end %>
       </tr>

@@ -1,5 +1,16 @@
 .row{
   margin-top: 20px;
+  ul {
+    list-style: none;
+    li {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  ol{
+    font-size: 15px;
+  }
   .choose_subject{
     border-bottom: 2px solid #E1E1E1;
   }
@@ -13,4 +24,49 @@
     position: relative;
     right: 38px;
   }
+  .exam_title{
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #D5D5D5;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .save_button{
+    float: left;
+    width: 200px;
+  }
+  .finish_button{
+    float: right;
+    width: 200px;
+  }
+}
+#clockdiv{
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+  border: 1px solid #E6E6E6;
+  position: fixed;
+  right: 10px;
+  top: 70px;
+  border-radius: 2px;
+  width: 269px;
+}
+#clockdiv > div{
+  padding: 10px;
+  border-radius: 3px;
+  background: #00BF96;
+  display: inline-block;
+}
+#clockdiv div > span{
+  padding: 15px;
+  border-radius: 3px;
+  background: #00816A;
+  display: inline-block;
+}
+.smalltext{
+  padding-top: 5px;
+  font-size: 16px;
 }

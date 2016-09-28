@@ -1,18 +1,15 @@
+require "factory_girl_rails"
 namespace :my_namespace do
   desc "TODO"
   task create_subjects: :environment do
-    #Subject
     10.times do
-      name  = Faker::Name.name
-      description = Faker::Lorem.sentence
-      Subject.create! name: name, description: description, duration: 20, number_of_questions: Settings.question_per_exam
+      FactoryGirl.create(:subject)
     end
   end
 
   desc "TODO"
   task create_questions: :environment do
     subjects = Subject.order(:created_at).take 20
-
     30.times do
       content = Faker::Lorem.word
       subjects.each do |subject|
@@ -28,24 +25,11 @@ namespace :my_namespace do
   end
 
   desc "TODO"
-  task create_user: :environment do
-    User.create! name: "Admin User",
-             email: "admin@gmail.com",
-             password: "password",
-             password_confirmation: "password",
-             admin: true
-    User.create! name: "User",
-                 email: "user@gmail.com",
-                 password: "password",
-                 password_confirmation: "password"
+  task create_users: :environment do
+    FactoryGirl.create(:user)
     10.times do |n|
-      name  = Faker::Name.name
-      email = "Test-#{n+1}@gmail.com"
-      password = "password"
-      User.create! name:  name,
-                   email: email,
-                   password: password,
-                   password_confirmation: password
+      FactoryGirl.create :user, name:"user#{n}",
+        email: "user#{n}@gmail.com", admin:false
     end
   end
 end
