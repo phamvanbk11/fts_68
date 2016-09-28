@@ -21,4 +21,8 @@ module GeneralMethodsHelper
       redirect_to root_url
     end
   end
+
+  def disable_role_change user
+    current_user.is? user
+  end
 end

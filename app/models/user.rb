@@ -7,4 +7,9 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :exams
+  acts_as_paranoid
+
+  def is? user
+    self == user
+  end
 end

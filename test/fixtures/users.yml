@@ -3,7 +3,7 @@
 one:
   email: MyString
   name: MyString
-  chatwordId: MyString
+  chatwork_id: MyString
   admin: false
   password_digest: MyString
   remember_digest: MyString
@@ -11,7 +11,7 @@ one:
 two:
   email: MyString
   name: MyString
-  chatwordId: MyString
+  chatwork_id: MyString
   admin: false
   password_digest: MyString
   remember_digest: MyString

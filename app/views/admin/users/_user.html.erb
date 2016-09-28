@@ -1,0 +1,21 @@
+<tr>
+  <td><%= number_order user_counter %></td>
+  <td><a href="mailto:<%= user.email %>"><%= user.email %></td>
+  <td><%= user.name %></td>
+  <td><%= user.chatwork_id %></td>
+  <td><%= user.created_at.strftime t("time.formats.date_time") %></td>
+  <td>
+    <%= form_for [:admin, user] do |f| %>
+      <%= f.check_box :admin, {class: "role-switch",
+        disabled: disable_role_change(user),
+        data: {size: "small", "on-color": "success",
+        "on-text": t("admin_role"), "off-text": t("user_role")}} %>
+    <% end %>
+  </td>
+  <td>
+    <% if !current_user.is? user %>
+      <%= link_to t("delete"), admin_user_path(user),
+        method: :delete, data: {confirm: t("confirm")} %>
+    <% end %>
+  </td>
+</tr>
