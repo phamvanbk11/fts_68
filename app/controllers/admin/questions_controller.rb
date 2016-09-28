@@ -9,8 +9,13 @@ class Admin::QuestionsController < ApplicationController
     params[:q] = {} if params[:q].nil?
     @states = mapping_enum_to_i18n :state, Question.states
     @q = Question.ransack params[:q]
-    @questions = @q.result(distinct: true).updated_desc.page(params[:page])
+    @questions = @q.result(distinct: true).updated_desc
+    @questions_pagenated = @questions.page(params[:page])
       .per Settings.question_per_page
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   def destroy

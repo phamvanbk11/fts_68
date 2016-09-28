@@ -11,6 +11,7 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers, allow_destroy: true
 
   scope :updated_desc, -> {order updated_at: :desc}
+  scope :sort_by_subject, -> {joins(:subject).order("subjects.name")}
   scope :unlearned, -> do
     where subject_id: Subject.joins(:exams, :questions)
       .where.not(exams: {is_finished: true}).distinct
