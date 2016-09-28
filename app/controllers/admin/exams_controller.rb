@@ -11,6 +11,7 @@ class Admin::ExamsController < ApplicationController
 
   def update
     if @exam.update_attributes exam_params
+      Chatwork.send_message @exam
       flash[:success] = t ".success"
     else
       flash[:danger] = t ".fail"

@@ -180,10 +180,14 @@ en:
   save: "Save"
   finish: "Finish"
   confirm_message: "Are you sure?"
-  exam_title: "Exam date:"
+  exam_title: "Exam date: "
   hours: "Hours"
   minutes: "Minutes"
   seconds: "Seconds"
   signin_with_fb: "Sign in with Facebook"
   start_time: "start_time"
   mytime: "mytime"
+  chatwork_success: "[To:%{id}] finished '%{subject_name}'
+    with score is %{score}/%{total_questions}"
+  chatwork_error: "Unfounded user name finished '%{subject_name}'
+    with score is %{score}/%{total_questions}"
