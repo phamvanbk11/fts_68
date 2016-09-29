@@ -19,6 +19,6 @@ class Admin::ExamsController < Admin::BaseController
 
   private
   def exam_params
-    params.require(:exam).permit(:state)
+    params.require(:exam).permit :state
   end
 end
