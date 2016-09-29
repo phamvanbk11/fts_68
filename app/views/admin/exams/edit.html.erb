@@ -1,0 +1,53 @@
+<div class="row exam">
+  <div class="col-md-10 col-md-offset-1 width-flash">
+    <div class="title">
+      <%= " #{t("exam_title")}
+        #{@exam.start_tested_at}" %>
+      <center class="exam_title"><%= @exam.subject.name %></center>
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+      <%= simple_form_for [:admin, @exam], html: {id: "form_example"} do |f| %>
+        <ol>
+          <%= f.fields_for :results do |results_field| %>
+            <li><h3><%= results_field.object.question.content %></h3></li>
+            <ul>
+              <% if results_field.object.question.multiple_choice? %>
+                <% results_field.object.question.answers.each do |answer| %>
+                  <li>
+                    <label class="checkbox-inline">
+                      <%= check_box_tag :is_correct, :true,
+                        check_answer_for(results_field.object.results_answers,
+                          answer), disabled: true %>
+                      <%= answer.content %>
+                    </label>
+                  </li>
+                <% end %>
+              <% elsif results_field.object.question.text? %>
+                <%= results_field.fields_for :results_answers do |result_answer| %>
+                  <%= result_answer.input :answer_for_text, label: false,
+                    disabled: @exam.is_finished? %>
+                <% end %>
+              <% else %>
+                <% results_field.object.question.answers.each do |answer| %>
+                  <li>
+                    <label class="radio-inline">
+                      <%= results_field.radio_button :answer_id, answer.id,
+                        disabled: @exam.is_finished? %>
+                      <%= answer.content %>
+                    </label>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+            <%= label_for results_field.object.is_correct_to_answer?%>
+            </p>
+          <% end %>
+        </ol>
+        <%= f.input_field :state, as: :hidden, value: :checked %>
+        <% if @exam.is_finished? %>
+          <%= f.submit t("check"), class: "btn btn-success save_button" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :users
     resources :subjects
     resources :questions
+    resources :exams
     root to: "subjects#index"
   end
 end

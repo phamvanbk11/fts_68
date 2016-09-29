@@ -17,7 +17,7 @@
       <tr>
         <td><%= index + 1 %></td>
         <td>
-          <%=  exam.created_at.format_time t("start_time") %>
+          <%= exam.created_at %>
         </td>
         <td><%= exam.subject.name %></td>
         <td>
@@ -27,21 +27,26 @@
         <td><%= exam.subject.duration %></td>
         <td><%= exam.subject.number_of_questions %></td>
         <td>
-          <%= Time.at(exam.spent_time).utc.format_time t("mytime") %>
+          <%= Time.at(exam.spent_time)
+            .utc.strftime(I18n.t "time.formats.mytime") %>
         </td>
-        <td><%= "#{exam.results.count_correct_answer}
-          #{t"result"} #{Settings.question_per_exam}" %></td>
-        <% if exam.is_finished? %>
-          <td>
-            <%= button_to t("view"), exam_path(exam), method: :get,
-              class: "btn btn-success" %>
-          </td>
-        <% else %>
-          <td>
+        <td>
+          <% if exam.checked? %>
+            <%= "#{exam.number_of_correct}
+              #{t"result"} #{exam.subject.number_of_questions}" %>
+          <% else %>
+            <%= t "hide" %>
+          <% end %>
+        </td>
+        <td>
+          <% if exam.start? %>
             <%= button_to t("start"), exam_path(exam), method: :get,
               class: "btn btn-primary" %>
-          </td>
-        <% end %>
+          <% else %>
+            <%= button_to t("view"), exam_path(exam), method: :get,
+              class: "btn btn-success" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,23 @@
+<tr>
+  <td>
+    <%= exam.created_at.strftime(I18n.t "time.formats.start_time") %>
+  </td>
+  <td><%= exam.subject.name %></td>
+  <td>
+    <span class="label label-<%= check_state_for_span exam.state %>">
+      <%= exam.state %>
+    </span></td>
+  <td><%= exam.subject.duration %></td>
+  <td><%= exam.subject.number_of_questions %></td>
+  <td><%= Time.at(exam.spent_time)
+    .utc.strftime(I18n.t "time.formats.mytime") %>
+  </td>
+  <td><%= exam.user.name %></td>
+  <td><%= "#{exam.number_of_correct}
+    #{t"result"} #{exam.subject.number_of_questions}" %></td>
+  <td>
+    <%= button_to t("check"), edit_admin_exam_path(exam),
+      method: :get,  class: "btn btn-success",
+      disabled: exam.start? || exam.testing? %>
+  </td>
+</tr>

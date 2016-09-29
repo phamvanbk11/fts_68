@@ -77,8 +77,9 @@ ActiveRecord::Schema.define(version: 20160927135639) do
     t.integer  "exam_id"
     t.integer  "question_id"
     t.integer  "answer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "is_correct",  default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "results", ["answer_id"], name: "index_results_on_answer_id"
