@@ -1,5 +1,4 @@
 class ExamsController < ApplicationController
-  before_action :authenticate_user!
   before_action :load_exam, only: [:show, :update]
 
   def create

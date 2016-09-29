@@ -1,7 +1,4 @@
-class Admin::UsersController < ApplicationController
-  before_action :require_logged_in_user, :require_logged_in_as_admin
-  load_and_authorize_resource
-
+class Admin::UsersController < Admin::BaseController
   def index
     @q = User.ransack params[:q]
     @users = @q.result(distinct: true).page(params[:page])
