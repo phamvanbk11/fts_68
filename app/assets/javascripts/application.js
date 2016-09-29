@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-switch
+//= require social-share-button
 //= require_tree .
 

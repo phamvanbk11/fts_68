@@ -1,7 +1,4 @@
-class Admin::SubjectsController < ApplicationController
-  before_action :require_logged_in_user, :require_logged_in_as_admin
-  load_and_authorize_resource
-
+class Admin::SubjectsController < Admin::BaseController
   def index
     @q = Subject.ransack params[:q]
     @subjects = @q.result(distinct: true).updated_desc.page(params[:page])

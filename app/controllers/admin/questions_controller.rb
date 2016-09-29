@@ -1,7 +1,5 @@
-class Admin::QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::BaseController
   include QuestionsHelper
-  load_and_authorize_resource
-  before_action :require_logged_in_user, :require_logged_in_as_admin
   before_action :load_subjects, except: [:show, :destroy]
   before_action :load_question_types, only: :index
 

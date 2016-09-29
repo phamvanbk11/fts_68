@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "social-share-button";
 
 /* mixins, variables, etc. */
 
@@ -224,4 +225,14 @@ input {
 .big-checkbox {
   width: 20px !important;
   height: 20px !important;
+}
+
+$size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }

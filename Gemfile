@@ -29,6 +29,7 @@ gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem "chatwork"
+gem "social-share-button"
 
 group :development, :test do
   gem "sqlite3",     "1.3.9"

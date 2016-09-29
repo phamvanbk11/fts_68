@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!
   before_action :load_subjects
   load_and_authorize_resource
 
