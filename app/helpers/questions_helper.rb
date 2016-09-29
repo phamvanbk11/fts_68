@@ -55,4 +55,8 @@ module QuestionsHelper
       end
     end
   end
+
+  def bg_for answer
+    "bg-success" if answer.is_correct?
+  end
 end

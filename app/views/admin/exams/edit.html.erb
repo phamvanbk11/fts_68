@@ -14,7 +14,7 @@
               <% if results_field.object.question.multiple_choice? %>
                 <% results_field.object.question.answers.each do |answer| %>
                   <li>
-                    <label class="checkbox-inline">
+                    <label class="checkbox-inline <%= bg_for answer %>">
                       <%= check_box_tag :is_correct, :true,
                         check_answer_for(results_field.object.results_answers,
                           answer), disabled: true %>
@@ -23,14 +23,17 @@
                   </li>
                 <% end %>
               <% elsif results_field.object.question.text? %>
-                <%= results_field.fields_for :results_answers do |result_answer| %>
+                <%= results_field.fields_for :results_answers do |result_answer|
+                  %>
                   <%= result_answer.input :answer_for_text, label: false,
                     disabled: @exam.is_finished? %>
+                  <%= label_tag nil, results_field.object.question.answers
+                    .first.content, class: "bg-success" %>
                 <% end %>
               <% else %>
                 <% results_field.object.question.answers.each do |answer| %>
                   <li>
-                    <label class="radio-inline">
+                    <label class="radio-inline <%= bg_for answer %>">
                       <%= results_field.radio_button :answer_id, answer.id,
                         disabled: @exam.is_finished? %>
                       <%= answer.content %>

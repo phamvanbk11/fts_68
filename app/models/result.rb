@@ -35,7 +35,7 @@ class Result < ActiveRecord::Base
       user_answers = self.results_answers.map do
         |result_answer| result_answer.answer_id
       end
-      (system_answers - user_answers).empty?
+      system_answers.sort == user_answers.sort
     end
   end
 end
