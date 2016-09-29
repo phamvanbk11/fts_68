@@ -63,6 +63,8 @@ en:
   form-contains: "Form contains"
   required-two-answers: "This question must has at least two answers"
   add_option: "Add option"
+  code_input: "User can use <code>your code here</code> to input it
+    on question content."
   admin:
     subjects:
       index:

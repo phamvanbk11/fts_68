@@ -13,7 +13,7 @@ class Question < ActiveRecord::Base
   scope :updated_desc, -> {order updated_at: :desc}
   scope :sort_by_subject, -> {joins(:subject).order("subjects.name")}
   scope :by_subject, ->(subject) do
-    where(subject_id: subject.id).distinct
+    where(subject_id: subject.id)
   end
   scope :randomize, ->(word_per_page) do
     order("RANDOM()").limit word_per_page

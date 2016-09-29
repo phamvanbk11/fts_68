@@ -30,13 +30,13 @@ gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem "chatwork"
 gem "social-share-button"
+gem "factory_girl_rails"
 
 group :development, :test do
   gem "sqlite3",     "1.3.9"
   gem "byebug",      "3.4.0"
   gem "web-console", "2.0.0.beta3"
   gem "spring",      "1.1.3"
-  gem "factory_girl_rails"
 end
 
 group :test do

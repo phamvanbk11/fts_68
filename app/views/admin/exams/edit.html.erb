@@ -9,7 +9,7 @@
       <%= simple_form_for [:admin, @exam], html: {id: "form_example"} do |f| %>
         <ol>
           <%= f.fields_for :results do |results_field| %>
-            <li><h3><%= results_field.object.question.content %></h3></li>
+            <li><h3><%= raw results_field.object.question.content %></h3></li>
             <ul>
               <% if results_field.object.question.multiple_choice? %>
                 <% results_field.object.question.answers.each do |answer| %>
